@@ -48,7 +48,6 @@ void	mt_complete_char(int *bit, unsigned char *val, int id)
 		if (kill(id, SIGUSR2) == -1)
 			mt_error_output(0);
 		ft_printf("\nMessage received and processed.\n");
-		exit(0);
 	}
 	write(1, val, 1);
 	*val = 0;
