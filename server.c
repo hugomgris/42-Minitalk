@@ -54,8 +54,12 @@ void	mt_signal_handler(int sig, siginfo_t *info, void *context)
 	static int				bit = 1;
 	static int				id = 0;
 
-	if (info->si_pid != 0)
+	if (info->si_pid != 0 && info->si_pid != id)
+	{
+		val = 0;
+		bit = 1;
 		id = info->si_pid;
+	}
 	(void)context;
 	mt_process_bit(sig, &val, &bit);
 	if (bit == 256)
